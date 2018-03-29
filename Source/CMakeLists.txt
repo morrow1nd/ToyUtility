@@ -2,23 +2,36 @@
 # ToyUtility/Source
 # 
 
-## Source files and their filters
-## INCLUDE(CMakeSources.cmake)
+## Configure file
+CONFIGURE_FILE(
+    "${TOY_UTILITY_SOURCE_DIR}/ToyUtilityConfig.h.in"
+    "${PROJECT_BINARY_DIR}/ToyUtilityConfig.h"
+    )
 
 
-# SET(TW_UTILITY_INCLUDE
-#     "${TW_SOURCE_DIR}/Utility"
-#     CACHE INTERNAL "ToyWorld Utility Include Paths"
-# )
+# Source files and their filters
+INCLUDE(CMakeSources.cmake)
 
-INCLUDE_DIRECTORIES(${TOY_UTILITY_SOURCE_DIR}/../Include)
+SET(TOY_UTILITY_INCLUDE_PATHS
+    "${TOY_UTILITY_INCLUDE_DIR}"
+    CACHE INTERNAL "ToyUtility INCLUDE PATHS"
+)
+
+INCLUDE_DIRECTORIES(
+    ${TOY_UTILITY_INCLUDE_DIR}
+    ${PROJECT_BINARY_DIR}
+)
 
 # Target
-#ADD_LIBRARY(ToyUtility ${TW_UTILITY_SRC})
-# ADD_LIBRARY(ToyUtility SHARED ${TW_UTILITY_SRC})
+ADD_LIBRARY(ToyUtility
+    ${TOY_UTILITY_SRC}
+    ToyUtilityConfig.h.in
+)
+# ADD_LIBRARY(ToyUtility SHARED ${TOY_UTILITY_SRC})
 
-ADD_LIBRARY(ToyUtility "test.cpp")
 
+#Only when it's set to TRUE, can we use: SET_PROPERTY(TARGET ToyUtility PROPERTY FOLDER Layers)
+set_property(GLOBAL PROPERTY USE_FOLDERS TRUE)
 
 # IDE specific
 SET_PROPERTY(TARGET ToyUtility PROPERTY FOLDER Layers)
