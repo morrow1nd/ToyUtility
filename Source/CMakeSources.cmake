@@ -7,18 +7,25 @@ SET(TOY_UTILITY_SRC_PREREQUISITES
 )
 
 SET(TOY_UTILITY_INC_CONTAINER
-
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Vector.h"
 )
 
 SET(TOY_UTILITY_SRC_CONTAINER
-    "test.cpp"
 )
 
 SET(TOY_UTILITY_INC_STRING
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/String/String.h"
 )
 
-SET(TOY_UTILITY_SRC_STRING)
+SET(TOY_UTILITY_SRC_STRING
+)
+
+SET(TOY_UTILITY_INC_MEMORY
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Memory/SmartPtr.h"
+)
+
+SET(TOY_UTILITY_SRC_MEMORY
+)
 
 
 # if(MSVC)
@@ -32,6 +39,8 @@ source_group("Header Files\\Container"                  FILES ${TOY_UTILITY_INC_
 source_group("Source Files\\Container"                  FILES ${TOY_UTILITY_SRC_CONTAINER})
 source_group("Header Files\\Prerequisites"              FILES ${TOY_UTILITY_INC_PREREQUISITES})
 source_group("Source Files\\Prerequisites"              FILES ${TOY_UTILITY_SRC_PREREQUISITES})
+source_group("Header Files\\Memory"						FILES ${TOY_UTILITY_INC_MEMORY})
+source_group("Source Files\\Memory"						FILES ${TOY_UTILITY_SRC_MEMORY})
 source_group("CMake"                                    FILES "CMakeSources.cmake" "CMakeLists.txt")
 
 
@@ -43,4 +52,7 @@ set(TOY_UTILITY_SRC
     ${TOY_UTILITY_SRC_CONTAINER}
     ${TOY_UTILITY_INC_PREREQUISITES}
     ${TOY_UTILITY_SRC_PREREQUISITES}
+	${TOY_UTILITY_INC_MEMORY}
+	${TOY_UTILITY_SRC_MEMORY}
+    "test.cpp"
 )
