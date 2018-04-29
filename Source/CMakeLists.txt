@@ -12,11 +12,6 @@ CONFIGURE_FILE(
 # Source files and their filters
 INCLUDE(CMakeSources.cmake)
 
-SET(TOY_UTILITY_INCLUDE_PATHS
-    "${TOY_UTILITY_INCLUDE_DIR}"
-    CACHE INTERNAL "ToyUtility INCLUDE PATHS"
-)
-
 INCLUDE_DIRECTORIES(
     ${TOY_UTILITY_INCLUDE_DIR}
     ${PROJECT_BINARY_DIR}
@@ -30,8 +25,18 @@ ADD_LIBRARY(ToyUtility
 # ADD_LIBRARY(ToyUtility SHARED ${TOY_UTILITY_SRC})
 
 
+# IDE specific
 #Only when it's set to TRUE, can we use: SET_PROPERTY(TARGET ToyUtility PROPERTY FOLDER Layers)
 set_property(GLOBAL PROPERTY USE_FOLDERS TRUE)
-
-# IDE specific
 SET_PROPERTY(TARGET ToyUtility PROPERTY FOLDER Layers)
+
+## For lib user
+SET(TOY_UTILITY_INCLUDE_PATHS
+    "${TOY_UTILITY_INCLUDE_DIR}"
+    CACHE INTERNAL "ToyUtility INCLUDE PATHS"
+)
+
+SET(TOY_UTILITY_LIBRARIES
+    ToyUtility
+    CACHE INTERNAL "ToyUtility Librarys"
+)
