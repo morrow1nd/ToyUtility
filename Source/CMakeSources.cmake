@@ -28,12 +28,45 @@ SET(TOY_UTILITY_INC_MEMORY
 SET(TOY_UTILITY_SRC_MEMORY
 )
 
+SET(TOY_UTILITY_INC_MATH
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Degree.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Math.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/MathFwdDecl.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Matrix3.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Matrix4.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/MatrixNxM.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Quaternion.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Radian.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/TransformPRS.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Vector2.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Vector2I.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Vector3.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Vector3I.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Vector4.h"
+)
+
+SET(TOY_UTILITY_SRC_MATH
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Degree.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Math.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Matrix3.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Matrix4.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Quaternion.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Radian.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/TransformPRS.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Vector2.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Vector2I.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Vector3.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Vector3I.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Math/Vector4.cpp"
+)
+
 
 # if(MSVC)
 #   list(APPEND BS_BANSHEECORE_INC_PLATFORM VSVisualizations.natvis)
 # endif()
 
 
+source_group("CMake"                                    FILES "CMakeSources.cmake" "CMakeLists.txt")
 source_group("Header Files\\String"                     FILES ${TOY_UTILITY_INC_STRING})
 source_group("Source Files\\String"                     FILES ${TOY_UTILITY_SRC_STRING})
 source_group("Header Files\\Container"                  FILES ${TOY_UTILITY_INC_CONTAINER})
@@ -42,7 +75,8 @@ source_group("Header Files\\Prerequisites"              FILES ${TOY_UTILITY_INC_
 source_group("Source Files\\Prerequisites"              FILES ${TOY_UTILITY_SRC_PREREQUISITES})
 source_group("Header Files\\Memory"						FILES ${TOY_UTILITY_INC_MEMORY})
 source_group("Source Files\\Memory"						FILES ${TOY_UTILITY_SRC_MEMORY})
-source_group("CMake"                                    FILES "CMakeSources.cmake" "CMakeLists.txt")
+source_group("Header Files\\Math"						FILES ${TOY_UTILITY_INC_MATH})
+source_group("Source Files\\Math"						FILES ${TOY_UTILITY_SRC_MATH})
 
 
 set(TOY_UTILITY_SRC
@@ -55,5 +89,6 @@ set(TOY_UTILITY_SRC
     ${TOY_UTILITY_SRC_PREREQUISITES}
 	${TOY_UTILITY_INC_MEMORY}
 	${TOY_UTILITY_SRC_MEMORY}
-    "test.cpp"
+	${TOY_UTILITY_INC_MATH}
+	${TOY_UTILITY_SRC_MATH}
 )
