@@ -7,8 +7,10 @@ SET(TOY_UTILITY_SRC_PREREQUISITES
 )
 
 SET(TOY_UTILITY_INC_CONTAINER
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Common.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Vector.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/UnorderedMap.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/UnorderedSet.h"
 )
 
 SET(TOY_UTILITY_SRC_CONTAINER
@@ -26,6 +28,11 @@ SET(TOY_UTILITY_INC_MEMORY
 )
 
 SET(TOY_UTILITY_SRC_MEMORY
+)
+
+SET(TOY_UTILITY_INC_DESIGN_PATTERN
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/IModule.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/ISingleton.h"
 )
 
 SET(TOY_UTILITY_INC_MATH
@@ -75,6 +82,7 @@ source_group("Header Files\\Prerequisites"              FILES ${TOY_UTILITY_INC_
 source_group("Source Files\\Prerequisites"              FILES ${TOY_UTILITY_SRC_PREREQUISITES})
 source_group("Header Files\\Memory"						FILES ${TOY_UTILITY_INC_MEMORY})
 source_group("Source Files\\Memory"						FILES ${TOY_UTILITY_SRC_MEMORY})
+source_group("Header Files\\Design Pattern"				FILES ${TOY_UTILITY_INC_DESIGN_PATTERN})
 source_group("Header Files\\Math"						FILES ${TOY_UTILITY_INC_MATH})
 source_group("Source Files\\Math"						FILES ${TOY_UTILITY_SRC_MATH})
 
@@ -89,6 +97,7 @@ set(TOY_UTILITY_SRC
     ${TOY_UTILITY_SRC_PREREQUISITES}
 	${TOY_UTILITY_INC_MEMORY}
 	${TOY_UTILITY_SRC_MEMORY}
+	${TOY_UTILITY_INC_DESIGN_PATTERN}
 	${TOY_UTILITY_INC_MATH}
 	${TOY_UTILITY_SRC_MATH}
 )
