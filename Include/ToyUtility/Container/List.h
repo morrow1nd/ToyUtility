@@ -8,7 +8,7 @@ namespace ToyUtility
 {
 
 template<typename T>
-using Vector = std::vector<T>;
+using List = std::vector<T>;
 
 
 } // end of namespace ToyUtility

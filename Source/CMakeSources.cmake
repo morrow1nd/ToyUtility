@@ -8,7 +8,7 @@ SET(TOY_UTILITY_SRC_PREREQUISITES
 
 SET(TOY_UTILITY_INC_CONTAINER
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Common.h"
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Vector.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/List.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/UnorderedMap.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/UnorderedSet.h"
 )
