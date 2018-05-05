@@ -6,8 +6,9 @@
 CONFIGURE_FILE(
     "${TOY_UTILITY_SOURCE_DIR}/ToyUtilityConfig.h.in"
     "${PROJECT_BINARY_DIR}/ToyUtilityConfig.h"
-    )
+)
 
+ADD_SUBDIRECTORY(ThirdParty)
 
 # Source files and their filters
 INCLUDE(CMakeSources.cmake)
@@ -15,6 +16,7 @@ INCLUDE(CMakeSources.cmake)
 INCLUDE_DIRECTORIES(
     ${TOY_UTILITY_INCLUDE_DIR}
     ${PROJECT_BINARY_DIR}
+	${TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE}
 )
 
 # Target
@@ -33,6 +35,7 @@ SET_PROPERTY(TARGET ToyUtility PROPERTY FOLDER Layers)
 ## For lib user
 SET(TOY_UTILITY_INCLUDE_PATHS
     "${TOY_UTILITY_INCLUDE_DIR}"
+	"${TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE}"
     CACHE INTERNAL "ToyUtility INCLUDE PATHS"
 )
 

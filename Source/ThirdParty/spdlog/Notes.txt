@@ -1,0 +1,2 @@
+Source:             https://github.com/gabime/spdlog
+Download Date:      2018/5/6

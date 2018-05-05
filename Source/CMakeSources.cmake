@@ -1,14 +1,8 @@
-SET(TOY_UTILITY_INC_PREREQUISITES
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Prerequisites/Types.h"
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Prerequisites/PreDefine.h"
-)
-
-SET(TOY_UTILITY_SRC_PREREQUISITES
-)
-
 SET(TOY_UTILITY_INC_CONTAINER
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Common.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/List.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Map.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/Set.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/UnorderedMap.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Container/UnorderedSet.h"
 )
@@ -16,23 +10,26 @@ SET(TOY_UTILITY_INC_CONTAINER
 SET(TOY_UTILITY_SRC_CONTAINER
 )
 
-SET(TOY_UTILITY_INC_STRING
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/String/String.h"
-)
-
-SET(TOY_UTILITY_SRC_STRING
-)
-
-SET(TOY_UTILITY_INC_MEMORY
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Memory/SmartPtr.h"
-)
-
-SET(TOY_UTILITY_SRC_MEMORY
-)
-
 SET(TOY_UTILITY_INC_DESIGN_PATTERN
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/IModule.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/ISingleton.h"
+)
+
+SET(TOY_UTILITY_INC_EVENT
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Event/Event.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Event/EventHub.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Event/EventListener.h"
+)
+
+SET(TOY_UTILITY_SRC_EVENT
+	"${TOY_UTILITY_SOURCE_DIR}/Event/EventListener.cpp"
+)
+
+SET(TOY_UTILITY_INC_LOG
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Log/Logger.h"
+)
+
+SET(TOY_UTILITY_SRC_LOG
 )
 
 SET(TOY_UTILITY_INC_MATH
@@ -67,6 +64,28 @@ SET(TOY_UTILITY_SRC_MATH
 	"${TOY_UTILITY_SOURCE_DIR}/Math/Vector4.cpp"
 )
 
+SET(TOY_UTILITY_INC_MEMORY
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Memory/SmartPtr.h"
+)
+
+SET(TOY_UTILITY_SRC_MEMORY
+)
+
+SET(TOY_UTILITY_INC_PREREQUISITES
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Prerequisites/Types.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Prerequisites/PreDefine.h"
+)
+
+SET(TOY_UTILITY_SRC_PREREQUISITES
+)
+
+SET(TOY_UTILITY_INC_STRING
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/String/String.h"
+)
+
+SET(TOY_UTILITY_SRC_STRING
+)
+
 
 # if(MSVC)
 #   list(APPEND BS_BANSHEECORE_INC_PLATFORM VSVisualizations.natvis)
@@ -74,6 +93,7 @@ SET(TOY_UTILITY_SRC_MATH
 
 
 source_group("CMake"                                    FILES "CMakeSources.cmake" "CMakeLists.txt")
+source_group("CMake\\ThirdParty"                        FILES "ThirdParty/CMakeLists.txt")
 source_group("Header Files\\String"                     FILES ${TOY_UTILITY_INC_STRING})
 source_group("Source Files\\String"                     FILES ${TOY_UTILITY_SRC_STRING})
 source_group("Header Files\\Container"                  FILES ${TOY_UTILITY_INC_CONTAINER})
@@ -83,12 +103,17 @@ source_group("Source Files\\Prerequisites"              FILES ${TOY_UTILITY_SRC_
 source_group("Header Files\\Memory"						FILES ${TOY_UTILITY_INC_MEMORY})
 source_group("Source Files\\Memory"						FILES ${TOY_UTILITY_SRC_MEMORY})
 source_group("Header Files\\Design Pattern"				FILES ${TOY_UTILITY_INC_DESIGN_PATTERN})
+source_group("Header Files\\Event"						FILES ${TOY_UTILITY_INC_EVENT})
+source_group("Source Files\\Event"						FILES ${TOY_UTILITY_SRC_EVENT})
 source_group("Header Files\\Math"						FILES ${TOY_UTILITY_INC_MATH})
 source_group("Source Files\\Math"						FILES ${TOY_UTILITY_SRC_MATH})
+source_group("Header Files\\Log"						FILES ${TOY_UTILITY_INC_LOG})
+source_group("Source Files\\Log"						FILES ${TOY_UTILITY_SRC_LOG})
 
 
 set(TOY_UTILITY_SRC
     "CMakeSources.cmake" "CMakeLists.txt"
+	"ThirdParty/CMakeLists.txt"
     ${TOY_UTILITY_INC_STRING}
     ${TOY_UTILITY_SRC_STRING}
     ${TOY_UTILITY_INC_CONTAINER}
@@ -98,6 +123,10 @@ set(TOY_UTILITY_SRC
 	${TOY_UTILITY_INC_MEMORY}
 	${TOY_UTILITY_SRC_MEMORY}
 	${TOY_UTILITY_INC_DESIGN_PATTERN}
+	${TOY_UTILITY_INC_EVENT}
+	${TOY_UTILITY_SRC_EVENT}
 	${TOY_UTILITY_INC_MATH}
 	${TOY_UTILITY_SRC_MATH}
+	${TOY_UTILITY_INC_LOG}
+	${TOY_UTILITY_SRC_LOG}
 )
