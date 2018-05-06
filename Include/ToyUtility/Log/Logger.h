@@ -257,7 +257,7 @@ public:
     template <typename Arg1, typename... Args>
     inline void Trace(const char* fmt, const Arg1 &arg1, const Args&... args)
     {
-        m_Logger->trace(level::info, fmt, arg1, args...);
+        m_Logger->trace(fmt, arg1, args...);
     }
 
     template<typename T>
@@ -269,7 +269,7 @@ public:
     template <typename Arg1, typename... Args>
     inline void Debug(const char* fmt, const Arg1 &arg1, const Args&... args)
     {
-        m_Logger->debug(level::info, fmt, arg1, args...);
+        m_Logger->debug(fmt, arg1, args...);
     }
 
     template<typename T>
@@ -281,7 +281,7 @@ public:
     template <typename Arg1, typename... Args>
     inline void Info(const char* fmt, const Arg1 &arg1, const Args&... args)
     {
-        m_Logger->info(level::info, fmt, arg1, args...);
+        m_Logger->info(fmt, arg1, args...);
     }
 
     template<typename T>
@@ -293,7 +293,7 @@ public:
     template <typename Arg1, typename... Args>
     inline void Warn(const char* fmt, const Arg1 &arg1, const Args&... args)
     {
-        m_Logger->warn(level::info, fmt, arg1, args...);
+        m_Logger->warn(fmt, arg1, args...);
     }
 
     template<typename T>
@@ -305,7 +305,7 @@ public:
     template <typename Arg1, typename... Args>
     inline void Error(const char* fmt, const Arg1 &arg1, const Args&... args)
     {
-        m_Logger->error(level::info, fmt, arg1, args...);
+        m_Logger->error(fmt, arg1, args...);
     }
 
     template<typename T>
@@ -317,7 +317,7 @@ public:
     template <typename Arg1, typename... Args>
     inline void Fatal(const char* fmt, const Arg1 &arg1, const Args&... args)
     {
-        m_Logger->critical(level::info, fmt, arg1, args...);
+        m_Logger->critical(fmt, arg1, args...);
     }
 
 
