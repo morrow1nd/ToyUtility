@@ -5,6 +5,7 @@
 #include "ToyUtility/Math/Vector3.h"
 #include "ToyUtility/Math/Matrix3.h"
 #include "ToyUtility/Math/Vector4.h"
+#include "ToyUtility/Math/Plane.h"
 
 
 namespace ToyUtility
@@ -368,20 +369,20 @@ public:
     *
     * @note	Matrix must be affine.
     */
-    //Plane multiplyAffine(const Plane& p) const
-    //{
-    //    Vector4 localNormal(p.normal.x, p.normal.y, p.normal.z, 0.0f);
-    //    Vector4 localPoint = localNormal * p.d;
-    //    localPoint.w = 1.0f;
+    Plane multiplyAffine(const Plane& p) const
+    {
+        Vector4 localNormal(p.normal.x, p.normal.y, p.normal.z, 0.0f);
+        Vector4 localPoint = localNormal * p.d;
+        localPoint.w = 1.0f;
 
-    //    Matrix4 itMat = inverse().transpose();
-    //    Vector4 worldNormal = itMat.multiplyAffine(localNormal);
-    //    Vector4 worldPoint = multiplyAffine(localPoint);
+        Matrix4 itMat = inverse().transpose();
+        Vector4 worldNormal = itMat.multiplyAffine(localNormal);
+        Vector4 worldPoint = multiplyAffine(localPoint);
 
-    //    float d = worldNormal.dot(worldPoint);
+        float d = worldNormal.dot(worldPoint);
 
-    //    return Plane(worldNormal.x, worldNormal.y, worldNormal.z, d);
-    //}
+        return Plane(worldNormal.x, worldNormal.y, worldNormal.z, d);
+    }
 
     /**
     * Transform a 3D point by this matrix.

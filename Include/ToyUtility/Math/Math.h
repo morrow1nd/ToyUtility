@@ -156,6 +156,236 @@ public:
     static Vector3 CalculateTriTangent(const Vector3& position1, const Vector3& position2, 
 	    const Vector3& position3, float u1, float v1, float u2, float v2, float u3, float v3);
 
+
+    /**
+    * Solves the linear equation with the parameters A, B. Returns number of roots found and the roots themselves will
+    * be output in the @p roots array.
+    *
+    * @param[in]	A		First variable.
+    * @param[in]	B		Second variable.
+    * @param[out]	roots	Must be at least size of 1.
+    *
+    * @note	Only returns real roots.
+    */
+    template <typename T>
+    static uint32 solveLinear(T A, T B, T* roots)
+    {
+        if (!ApproxEquals(A, (T)0))
+        {
+            roots[0] = -B / A;
+            return 1;
+        }
+
+        roots[0] = 0.0f;
+        return 1;
+    }
+
+    /**
+    * Solves the quadratic equation with the parameters A, B, C. Returns number of roots found and the roots themselves
+    * will be output in the @p roots array.
+    *
+    * @param[in]	A		First variable.
+    * @param[in]	B		Second variable.
+    * @param[in]	C		Third variable.
+    * @param[out]	roots	Must be at least size of 2.
+    *
+    * @note	Only returns real roots.
+    */
+    template <typename T>
+    static uint32 solveQuadratic(T A, T B, T C, T* roots)
+    {
+        if (!ApproxEquals(A, (T)0))
+        {
+            T p = B / (2 * A);
+            T q = C / A;
+            T D = p * p - q;
+
+            if (!ApproxEquals(D, (T)0))
+            {
+                if (D < (T)0)
+                    return 0;
+
+                T sqrtD = sqrt(D);
+                roots[0] = sqrtD - p;
+                roots[1] = -sqrtD - p;
+
+                return 2;
+            }
+            else
+            {
+                roots[0] = -p;
+                roots[1] = -p;
+
+                return 1;
+            }
+        }
+        else
+        {
+            return solveLinear(B, C, roots);
+        }
+    }
+
+    /**
+    * Solves the cubic equation with the parameters A, B, C, D. Returns number of roots found and the roots themselves
+    * will be output in the @p roots array.
+    *
+    * @param[in]	A		First variable.
+    * @param[in]	B		Second variable.
+    * @param[in]	C		Third variable.
+    * @param[in]	D		Fourth variable.
+    * @param[out]	roots	Must be at least size of 3.
+    *
+    * @note	Only returns real roots.
+    */
+    template <typename T>
+    static uint32 solveCubic(T A, T B, T C, T D, T* roots)
+    {
+        static const T THIRD = (1 / (T)3);
+
+        T invA = 1 / A;
+        A = B * invA;
+        B = C * invA;
+        C = D * invA;
+
+        T sqA = A * A;
+        T p = THIRD * (-THIRD * sqA + B);
+        T q = ((T)0.5) * ((2 / (T)27) * A * sqA - THIRD * A * B + C);
+
+        T cbp = p * p * p;
+        D = q * q + cbp;
+
+        uint32 numRoots = 0;
+        if (!ApproxEquals(D, (T)0))
+        {
+            if (D < 0.0)
+            {
+                T phi = THIRD * ::acos(-q / sqrt(-cbp));
+                T t = 2 * sqrt(-p);
+
+                roots[0] = t * cos(phi);
+                roots[1] = -t * cos(phi + PI * THIRD);
+                roots[2] = -t * cos(phi - PI * THIRD);
+
+                numRoots = 3;
+            }
+            else
+            {
+                T sqrtD = sqrt(D);
+                T u = cbrt(sqrtD + fabs(q));
+
+                if (q > (T)0)
+                    roots[0] = -u + p / u;
+                else
+                    roots[0] = u - p / u;
+
+                numRoots = 1;
+            }
+        }
+        else
+        {
+            if (!ApproxEquals(q, (T)0))
+            {
+                T u = cbrt(-q);
+                roots[0] = 2 * u;
+                roots[1] = -u;
+
+                numRoots = 2;
+            }
+            else
+            {
+                roots[0] = 0.0f;
+                numRoots = 1;
+            }
+        }
+
+        T sub = THIRD * A;
+        for (uint32 i = 0; i < numRoots; i++)
+            roots[i] -= sub;
+
+        return numRoots;
+    }
+
+    /**
+    * Solves the quartic equation with the parameters A, B, C, D, E. Returns number of roots found and the roots
+    * themselves will be output in the @p roots array.
+    *
+    * @param[in]	A		First variable.
+    * @param[in]	B		Second variable.
+    * @param[in]	C		Third variable.
+    * @param[in]	D		Fourth variable.
+    * @param[in]	E		Fifth variable.
+    * @param[out]	roots	Must be at least size of 4.
+    *
+    * @note	Only returns real roots.
+    */
+    template <typename T>
+    static uint32 solveQuartic(T A, T B, T C, T D, T E, T* roots)
+    {
+        T invA = 1 / A;
+        A = B * invA;
+        B = C * invA;
+        C = D * invA;
+        D = E * invA;
+
+        T sqA = A * A;
+        T p = -(3 / (T)8) * sqA + B;
+        T q = (1 / (T)8) * sqA * A - (T)0.5 * A * B + C;
+        T r = -(3 / (T)256) * sqA * sqA + (1 / (T)16) * sqA * B - (1 / (T)4) * A * C + D;
+
+        uint32 numRoots = 0;
+        if (!ApproxEquals(r, (T)0))
+        {
+            T cubicA = 1;
+            T cubicB = -(T)0.5 * p;
+            T cubicC = -r;
+            T cubicD = (T)0.5 * r * p - (1 / (T)8) * q * q;
+
+            solveCubic(cubicA, cubicB, cubicC, cubicD, roots);
+            T z = roots[0];
+
+            T u = z * z - r;
+            T v = 2 * z - p;
+
+            if (ApproxEquals(u, T(0)))
+                u = 0;
+            else if (u > 0)
+                u = sqrt(u);
+            else
+                return 0;
+
+            if (ApproxEquals(v, T(0)))
+                v = 0;
+            else if (v > 0)
+                v = sqrt(v);
+            else
+                return 0;
+
+            T quadraticA = 1;
+            T quadraticB = q < 0 ? -v : v;
+            T quadraticC = z - u;
+
+            numRoots = solveQuadratic(quadraticA, quadraticB, quadraticC, roots);
+
+            quadraticA = 1;
+            quadraticB = q < 0 ? v : -v;
+            quadraticC = z + u;
+
+            numRoots += solveQuadratic(quadraticA, quadraticB, quadraticC, roots + numRoots);
+        }
+        else
+        {
+            numRoots = solveCubic(q, p, (T)0, (T)1, roots);
+            roots[numRoots++] = 0;
+        }
+
+        T sub = (1 / (T)4) * A;
+        for (uint32 i = 0; i < numRoots; i++)
+            roots[i] -= sub;
+
+        return numRoots;
+    }
+
+
     static constexpr float POS_INFINITY = std::numeric_limits<float>::infinity();
     static constexpr float NEG_INFINITY = -std::numeric_limits<float>::infinity();
     static constexpr float PI = 3.14159265358979323846f;
