@@ -7,6 +7,13 @@
 namespace ToyUtility
 {
 
+//// Supported encoding types for strings
+//enum class StringEncoding
+//{
+//    UTF8 = 1,
+//    UTF16 = 2
+//};
+
 
 template <typename T>
 using BasicString = std::basic_string < T, std::char_traits<T>, std::allocator<T> >;

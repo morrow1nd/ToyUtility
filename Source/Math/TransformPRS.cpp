@@ -1,4 +1,5 @@
 #include "ToyUtility/Math/TransformPRS.h"
+#include "ToyUtility/Serialization/Serializer.h"
 
 
 namespace ToyUtility
@@ -154,6 +155,38 @@ void TransformPRS::SetForward(const Vector3& forwardDir)
     Quaternion currentRotation = GetRotation();
     currentRotation.lookRotation(forwardDir);
     SetRotation(currentRotation);
+}
+
+void TransformPRS::Serialize(Serializer & serializer) const
+{
+    serializer.BeginDictionary("Position");
+    {
+        serializer.Push(m_LocalPosition.x, "x");
+        serializer.Push(m_LocalPosition.y, "y");
+        serializer.Push(m_LocalPosition.z, "z");
+    }
+    serializer.EndDictionary();
+    serializer.BeginDictionary("Rotate");
+    {
+        Radian x, y, z;
+        bool uniqueResult = m_LocalRotation.toEulerAngles(x, y ,z);
+        serializer.Push(x.ValueDegrees(), "x");
+        serializer.Push(y.ValueDegrees(), "y");
+        serializer.Push(z.ValueDegrees(), "z");
+    }
+    serializer.EndDictionary();
+    serializer.BeginDictionary("Scale");
+    {
+        serializer.Push(m_LocalScale.x, "x");
+        serializer.Push(m_LocalScale.y, "y");
+        serializer.Push(m_LocalScale.z, "z");
+    }
+    serializer.EndDictionary();
+}
+
+void TransformPRS::UnSerialize(Serializer & serializer)
+{
+    // TODOH
 }
 
 

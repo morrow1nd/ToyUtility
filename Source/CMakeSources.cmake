@@ -10,6 +10,18 @@ SET(TOY_UTILITY_INC_CONTAINER
 SET(TOY_UTILITY_SRC_CONTAINER
 )
 
+SET(TOY_UTILITY_INC_DATA_STREAM
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DataStream/DataStream.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DataStream/FileDataStream.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DataStream/MemoryDataStream.h"
+)
+
+SET(TOY_UTILITY_SRC_DATA_STREAM
+	"${TOY_UTILITY_SOURCE_DIR}/DataStream/DataStream.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/DataStream/FileDataStream.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/DataStream/MemoryDataStream.cpp"
+)
+
 SET(TOY_UTILITY_INC_DESIGN_PATTERN
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/IModule.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/ISingleton.h"
@@ -105,6 +117,22 @@ SET(TOY_UTILITY_INC_PREREQUISITES
 SET(TOY_UTILITY_SRC_PREREQUISITES
 )
 
+SET(TOY_UTILITY_INC_SERIALIZATION
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/BinarySerializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/JsonSerializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Serializable.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Serializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/TextSerializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/XmlSerializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Yaml2Serializer.h"
+)
+
+SET(TOY_UTILITY_SRC_SERIALIZATION
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/Serializer.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/TextSerializer.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/XmlSerializer.cpp"
+)
+
 SET(TOY_UTILITY_INC_STRING
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/String/String.h"
 )
@@ -135,6 +163,10 @@ source_group("Header Files\\Math"						FILES ${TOY_UTILITY_INC_MATH})
 source_group("Source Files\\Math"						FILES ${TOY_UTILITY_SRC_MATH})
 source_group("Header Files\\Log"						FILES ${TOY_UTILITY_INC_LOG})
 source_group("Source Files\\Log"						FILES ${TOY_UTILITY_SRC_LOG})
+source_group("Header Files\\Serialization"              FILES ${TOY_UTILITY_INC_SERIALIZATION})
+source_group("Source Files\\Serialization"              FILES ${TOY_UTILITY_SRC_SERIALIZATION})
+source_group("Header Files\\Data Stream"                FILES ${TOY_UTILITY_INC_DATA_STREAM})
+source_group("Source Files\\Data Stream"                FILES ${TOY_UTILITY_SRC_DATA_STREAM})
 
 
 set(TOY_UTILITY_SRC
@@ -155,4 +187,8 @@ set(TOY_UTILITY_SRC
 	${TOY_UTILITY_SRC_MATH}
 	${TOY_UTILITY_INC_LOG}
 	${TOY_UTILITY_SRC_LOG}
+	${TOY_UTILITY_INC_SERIALIZATION}
+	${TOY_UTILITY_SRC_SERIALIZATION}
+	${TOY_UTILITY_INC_DATA_STREAM}
+	${TOY_UTILITY_SRC_DATA_STREAM}
 )

@@ -24,6 +24,13 @@ class Event;
 class EventListener
 {
 public:
+    EventListener()
+        :
+        m_EventHub(nullptr)
+    {}
+
+
+public:
     using EventHandlerType = std::function<void(Event&)>;
 
     virtual EventListenerType GetListenerType() const = 0;

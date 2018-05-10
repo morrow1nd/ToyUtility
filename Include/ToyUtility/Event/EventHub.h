@@ -5,6 +5,8 @@
 #include "ToyUtility/Container/Map.h"
 #include "ToyUtility/Container/List.h"
 
+#include "ToyUtility/Log/Logger.h"
+
 
 namespace ToyUtility
 {
@@ -38,7 +40,15 @@ public:
 
     void RegisterEvent(EventId eventId, EventListener* listener)
     {
-        m_ListenersByEventId[eventId].push_back(listener);
+        auto& res = m_ListenersByEventId.find(eventId);
+        if (res == m_ListenersByEventId.end())
+        {
+            m_ListenersByEventId[eventId] = List<EventListener*>({listener});
+        }
+        else
+        {
+            res->second.push_back(listener);
+        }
     }
 
 

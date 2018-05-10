@@ -11,6 +11,9 @@ namespace ToyUtility
 {
 
 
+#define TOY_RAW_LOG_ERR std::cerr
+
+
 //class ILogger
 //{
 //

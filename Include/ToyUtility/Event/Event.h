@@ -83,6 +83,9 @@ public:
 
 public:
     EventId GetId() const { return m_Id; }
+    
+    template<typename T>
+    T& GetArg4(){ return *static_cast<T*>(m_Arg4); }
 
 
 private:

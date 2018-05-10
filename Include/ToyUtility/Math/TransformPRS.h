@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ToyUtility/Prerequisites/PreDefine.h"
+#include "ToyUtility/Serialization/Serializable.h"
 #include "ToyUtility/Math/Vector3.h"
 #include "ToyUtility/Math/Quaternion.h"
 #include "ToyUtility/Math/Matrix4.h"
@@ -10,7 +11,7 @@ namespace ToyUtility
 {
 
 
-class TransformPRS
+class TransformPRS : public Serializable
 {
 public:
     TransformPRS();
@@ -142,6 +143,11 @@ public:
 
     // Rotates around X axis
     void Pitch(const Radian& angle);
+
+
+    // Serializable
+    virtual void Serialize(Serializer& serializer) const override;
+    virtual void UnSerialize(Serializer& serializer) override;
 
 
 private:
