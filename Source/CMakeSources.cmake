@@ -37,6 +37,13 @@ SET(TOY_UTILITY_SRC_EVENT
 	"${TOY_UTILITY_SOURCE_DIR}/Event/EventListener.cpp"
 )
 
+SET(TOY_UTILITY_INC_FILE
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/File/FileSystemPath.h"
+)
+
+SET(TOY_UTILITY_SRC_FILE
+)
+
 SET(TOY_UTILITY_INC_LOG
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Log/Logger.h"
 )
@@ -123,14 +130,20 @@ SET(TOY_UTILITY_INC_SERIALIZATION
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Serializable.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Serializer.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/TextSerializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Unserializer.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/XmlSerializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/XmlUnserializer.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Yaml2Serializer.h"
 )
 
 SET(TOY_UTILITY_SRC_SERIALIZATION
-	"${TOY_UTILITY_SOURCE_DIR}/Serialization/Serializer.cpp"
+	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/Serializer.cpp"
 	"${TOY_UTILITY_SOURCE_DIR}/Serialization/TextSerializer.cpp"
+	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/Unserializer.cpp"
 	"${TOY_UTILITY_SOURCE_DIR}/Serialization/XmlSerializer.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/XmlUnserializer.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/Yaml2Serializer.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/Yaml2Unserializer.cpp"
 )
 
 SET(TOY_UTILITY_INC_STRING
@@ -159,6 +172,8 @@ source_group("Source Files\\Memory"						FILES ${TOY_UTILITY_SRC_MEMORY})
 source_group("Header Files\\Design Pattern"				FILES ${TOY_UTILITY_INC_DESIGN_PATTERN})
 source_group("Header Files\\Event"						FILES ${TOY_UTILITY_INC_EVENT})
 source_group("Source Files\\Event"						FILES ${TOY_UTILITY_SRC_EVENT})
+source_group("Header Files\\File"						FILES ${TOY_UTILITY_INC_FILE})
+source_group("Source Files\\File"						FILES ${TOY_UTILITY_SRC_FILE})
 source_group("Header Files\\Math"						FILES ${TOY_UTILITY_INC_MATH})
 source_group("Source Files\\Math"						FILES ${TOY_UTILITY_SRC_MATH})
 source_group("Header Files\\Log"						FILES ${TOY_UTILITY_INC_LOG})
@@ -183,6 +198,8 @@ set(TOY_UTILITY_SRC
 	${TOY_UTILITY_INC_DESIGN_PATTERN}
 	${TOY_UTILITY_INC_EVENT}
 	${TOY_UTILITY_SRC_EVENT}
+	${TOY_UTILITY_INC_FILE}
+	${TOY_UTILITY_SRC_FILE}
 	${TOY_UTILITY_INC_MATH}
 	${TOY_UTILITY_SRC_MATH}
 	${TOY_UTILITY_INC_LOG}

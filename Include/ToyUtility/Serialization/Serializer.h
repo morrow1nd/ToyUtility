@@ -80,20 +80,6 @@ public:
     virtual void Push(const Vector2& v, const String& fieldName = "") = 0;
     virtual void Push(const Vector3& v, const String& fieldName = "") = 0;
 
-    // Pop Operation
-    virtual void Pop(const String& fieldName, uint8& v) = 0;
-    virtual void Pop(const String& fieldName, int8& v) = 0;
-    virtual void Pop(const String& fieldName, uint16& v) = 0;
-    virtual void Pop(const String& fieldName, int16& v) = 0;
-    virtual void Pop(const String& fieldName, uint32& v) = 0;
-    virtual void Pop(const String& fieldName, int32& v) = 0;
-    virtual void Pop(const String& fieldName, bool& v) = 0;
-    virtual void Pop(const String& fieldName, float& v) = 0;
-    virtual void Pop(const String& fieldName, double& v) = 0;
-    virtual void Pop(const String& fieldName, String& v) = 0;
-    virtual void Pop(const String& fieldName, Vector2& v) = 0;
-    virtual void Pop(const String& fieldName, Vector3& v) = 0;
-
     virtual void BeginDictionary(const String& name = "") {}
     virtual void EndDictionary() {}
 

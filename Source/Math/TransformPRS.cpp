@@ -1,5 +1,6 @@
 #include "ToyUtility/Math/TransformPRS.h"
 #include "ToyUtility/Serialization/Serializer.h"
+#include "ToyUtility/Serialization/Unserializer.h"
 
 
 namespace ToyUtility
@@ -184,9 +185,35 @@ void TransformPRS::Serialize(Serializer & serializer) const
     serializer.EndDictionary();
 }
 
-void TransformPRS::UnSerialize(Serializer & serializer)
+void TransformPRS::Unserialize(Unserializer & unserializer)
 {
-    // TODOH
+    unserializer.BeginDictionary("Position");
+    {
+        unserializer.Pop("x", m_LocalPosition.x);
+        unserializer.Pop("y", m_LocalPosition.y);
+        unserializer.Pop("z", m_LocalPosition.z);
+    }
+    unserializer.EndDictionary();
+    unserializer.BeginDictionary("Rotate");
+    {
+        Degree x, y, z;
+        float v;
+        unserializer.Pop("x", v);
+        x = v;
+        unserializer.Pop("y", v);
+        y = v;
+        unserializer.Pop("z", v);
+        z = v;
+        m_LocalRotation.fromEulerAngles(x, y, z);
+    }
+    unserializer.EndDictionary();
+    unserializer.BeginDictionary("Scale");
+    {
+        unserializer.Pop("x", m_LocalScale.x);
+        unserializer.Pop("y", m_LocalScale.y);
+        unserializer.Pop("z", m_LocalScale.z);
+    }
+    unserializer.EndDictionary();
 }
 
 

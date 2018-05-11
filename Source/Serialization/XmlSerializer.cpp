@@ -18,6 +18,11 @@ XmlSerializer::XmlSerializer(DataStream & stream)
     Serializer(stream)
 {}
 
+XmlSerializer::~XmlSerializer()
+{
+    m_Doc.clear();
+}
+
 void XmlSerializer::Push(const uint8 v, const String & fieldName)
 {
     _AttachNode(fieldName, std::to_string(v));
@@ -84,54 +89,6 @@ void XmlSerializer::Push(const Vector3 & v, const String & fieldName)
     _AttachNode(fieldName, m_TemStrStream.str());
 }
 
-void XmlSerializer::Pop(const String & fieldName, uint8 & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, int8 & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, uint16 & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, int16 & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, uint32 & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, int32 & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, bool & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, float & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, double & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, String & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, Vector2 & v)
-{
-}
-
-void XmlSerializer::Pop(const String & fieldName, Vector3 & v)
-{
-}
-
 void XmlSerializer::BeginDictionary(const String& name)
 {
     auto node = _CreateNode(name);
@@ -158,8 +115,6 @@ void XmlSerializer::EndDictionary()
 void XmlSerializer::BeginArray(const String & name)
 {
     BeginDictionary(name);
-
-    //return SerializerArrayBlock(this);
 }
 
 void XmlSerializer::EndArray()
@@ -174,7 +129,7 @@ void XmlSerializer::Flush()
     m_Stream.WriteString(s);
 }
 
-rapidxml::xml_node<>* XmlSerializer::_CreateNode(const String & nodeName, const String& value)
+rapidxml::xml_node<>* XmlSerializer::_CreateNode(const String& nodeName, const String& value)
 {
     xml_node<>* node = m_Doc.allocate_node(node_type::node_element,
         nodeName == "" ? "unnamed_xml_node" : m_Doc.allocate_string(nodeName.c_str()),
@@ -182,7 +137,7 @@ rapidxml::xml_node<>* XmlSerializer::_CreateNode(const String & nodeName, const 
     return node;
 }
 
-void XmlSerializer::_AttachNode(const String & nodeName, const String & value)
+void XmlSerializer::_AttachNode(const String& nodeName, const String& value)
 {
     if (m_NodesStack.empty())
     {

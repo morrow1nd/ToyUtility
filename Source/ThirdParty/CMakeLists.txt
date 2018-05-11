@@ -14,3 +14,21 @@ SET(TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE
 	"${TOY_UTILITY_SOURCE_DIR}/ThirdParty/rapidxml/rapidxml-1.13/include/"
     CACHE INTERNAL "ToyUtility ThirdParty INCLUDE PATHS"
 )
+
+
+## yaml
+ADD_SUBDIRECTORY(libyaml/libyaml-0.1.7)
+SET(TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE
+    "${TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE}"
+
+    "${TOY_UTILITY_SOURCE_DIR}/ThirdParty/libyaml/libyaml-0.1.7/include/"
+    CACHE INTERNAL "ToyUtility ThirdParty INCLUDE PATHS"
+)
+
+SET(TOY_UTILITY_THIRD_PARTY_LIBS_DEPS
+    "${TOY_UTILITY_THIRD_PARTY_LIBS_DEPS}"
+
+    "yaml"
+    CACHE INTERNAL "ToyUtility ThirdParty Dependent Libs"
+)
+SET_PROPERTY(TARGET yaml PROPERTY FOLDER ThirdParty)

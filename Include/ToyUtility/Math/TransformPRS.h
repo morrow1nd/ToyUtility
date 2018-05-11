@@ -147,7 +147,7 @@ public:
 
     // Serializable
     virtual void Serialize(Serializer& serializer) const override;
-    virtual void UnSerialize(Serializer& serializer) override;
+    virtual void Unserialize(Unserializer& serializer) override;
 
 
 private:

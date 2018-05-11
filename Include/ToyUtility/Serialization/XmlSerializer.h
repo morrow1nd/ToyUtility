@@ -18,6 +18,8 @@ class XmlSerializer : public Serializer
 public:
     XmlSerializer(DataStream& stream);
 
+    virtual ~XmlSerializer() override;
+
 
 public:
     // Push Operation
@@ -33,20 +35,6 @@ public:
     virtual void Push(const String& v, const String& fieldName = "") override;
     virtual void Push(const Vector2& v, const String& fieldName = "") override;
     virtual void Push(const Vector3& v, const String& fieldName = "") override;
-
-    // Pop Operation
-    virtual void Pop(const String& fieldName, uint8& v) override;
-    virtual void Pop(const String& fieldName, int8& v) override;
-    virtual void Pop(const String& fieldName, uint16& v) override;
-    virtual void Pop(const String& fieldName, int16& v) override;
-    virtual void Pop(const String& fieldName, uint32& v) override;
-    virtual void Pop(const String& fieldName, int32& v) override;
-    virtual void Pop(const String& fieldName, bool& v) override;
-    virtual void Pop(const String& fieldName, float& v) override;
-    virtual void Pop(const String& fieldName, double& v) override;
-    virtual void Pop(const String& fieldName, String& v) override;
-    virtual void Pop(const String& fieldName, Vector2& v) override;
-    virtual void Pop(const String& fieldName, Vector3& v) override;
 
     virtual void BeginDictionary(const String& name = "") override;
     virtual void EndDictionary() override;
