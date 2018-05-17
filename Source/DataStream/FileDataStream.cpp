@@ -51,14 +51,14 @@ FileDataStream::~FileDataStream()
     Close();
 }
 
-size_t FileDataStream::Read(void* buf, size_t count)
+uint32 FileDataStream::Read(void* buf, uint32 count)
 {
     mInStream->read(static_cast<char*>(buf), static_cast<std::streamsize>(count));
 
-    return (size_t)mInStream->gcount();
+    return (uint32)mInStream->gcount();
 }
 
-size_t FileDataStream::Write(const void* buf, size_t count)
+uint32 FileDataStream::Write(const void* buf, uint32 count)
 {
     size_t written = 0;
     if (IsWriteable() && mFStream)
@@ -75,17 +75,17 @@ void FileDataStream::Skip(int32 count)
     mInStream->seekg(static_cast<std::ifstream::pos_type>(count), std::ios::cur);
 }
 
-void FileDataStream::Seek(size_t pos)
+void FileDataStream::Seek(uint32 pos)
 {
     mInStream->clear(); // Clear fail status in case eof was set
     mInStream->seekg(static_cast<std::streamoff>(pos), std::ios::beg);
 }
 
-size_t FileDataStream::Tell() const
+uint32 FileDataStream::Tell() const
 {
     mInStream->clear(); // Clear fail status in case eof was set
 
-    return (size_t)mInStream->tellg();
+    return (uint32)mInStream->tellg();
 }
 
 bool FileDataStream::Eof() const

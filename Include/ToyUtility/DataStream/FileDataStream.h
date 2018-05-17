@@ -27,19 +27,19 @@ public:
     ~FileDataStream();
 
     /** @copydoc DataStream::read */
-    size_t Read(void* buf, size_t count) override;
+    uint32 Read(void* buf, uint32 count) override;
 
     /** @copydoc DataStream::write */
-    size_t Write(const void* buf, size_t count) override;
+    uint32 Write(const void* buf, uint32 count) override;
 
     /** @copydoc DataStream::skip */
-    void Skip(int count) override;
+    void Skip(int32 count) override;
 
     /** @copydoc DataStream::seek */
-    void Seek(size_t pos) override;
+    void Seek(uint32 pos) override;
 
     /** @copydoc DataStream::tell */
-    size_t Tell() const override;
+    uint32 Tell() const override;
 
     /** @copydoc DataStream::eof */
     bool Eof() const override;

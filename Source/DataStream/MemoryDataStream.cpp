@@ -34,7 +34,7 @@ MemoryDataStream::~MemoryDataStream()
     Close();
 }
 
-size_t MemoryDataStream::Read(void* buf, size_t count)
+uint32 MemoryDataStream::Read(void* buf, uint32 count)
 {
     size_t cnt = count;
 
@@ -51,7 +51,7 @@ size_t MemoryDataStream::Read(void* buf, size_t count)
     return cnt;
 }
 
-size_t MemoryDataStream::Write(const void* buf, size_t count)
+uint32 MemoryDataStream::Write(const void* buf, uint32 count)
 {
     size_t written = 0;
     if (IsWriteable())
@@ -78,13 +78,13 @@ void MemoryDataStream::Skip(int32 count)
     mPos = mData + newpos;
 }
 
-void MemoryDataStream::Seek(size_t pos)
+void MemoryDataStream::Seek(uint32 pos)
 {
     assert(mData + pos <= mEnd);
     mPos = mData + pos;
 }
 
-size_t MemoryDataStream::Tell() const
+uint32 MemoryDataStream::Tell() const
 {
     return mPos - mData;
 }
