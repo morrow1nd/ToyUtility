@@ -1,5 +1,14 @@
 # Source/ThirdParty
 
+## Clean these variables
+SET(TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE
+    CACHE INTERNAL "ToyUtility ThirdParty INCLUDE PATHS"
+)
+SET(TOY_UTILITY_THIRD_PARTY_LIBS_DEPS
+    CACHE INTERNAL "ToyUtility ThirdParty Dependent Libs"
+)
+
+
 ## spdlog
 SET(TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE
 	"${TOY_UTILITY_SOURCE_DIR}/ThirdParty/spdlog/spdlog-0.16.3/include/"
@@ -24,7 +33,6 @@ SET(TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE
     "${TOY_UTILITY_SOURCE_DIR}/ThirdParty/libyaml/libyaml-0.1.7/include/"
     CACHE INTERNAL "ToyUtility ThirdParty INCLUDE PATHS"
 )
-
 SET(TOY_UTILITY_THIRD_PARTY_LIBS_DEPS
     "${TOY_UTILITY_THIRD_PARTY_LIBS_DEPS}"
 
@@ -32,3 +40,19 @@ SET(TOY_UTILITY_THIRD_PARTY_LIBS_DEPS
     CACHE INTERNAL "ToyUtility ThirdParty Dependent Libs"
 )
 SET_PROPERTY(TARGET yaml PROPERTY FOLDER ThirdParty)
+
+
+## fmt
+#ADD_SUBDIRECTORY(fmt/fmt-4.1.0 EXCLUDE_FROM_ALL)
+#SET(TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE
+#    "${TOY_UTILITY_THIRD_PARTY_LIBS_INCLUDE}"
+#
+#    "${TOY_UTILITY_SOURCE_DIR}/ThirdParty/fmt/fmt-4.1.0/include/"
+#    CACHE INTERNAL "ToyUtility ThirdParty INCLUDE PATHS"
+#)
+#SET(TOY_UTILITY_THIRD_PARTY_LIBS_DEPS
+#    "${TOY_UTILITY_THIRD_PARTY_LIBS_DEPS}"
+#
+#    "fmt::fmt-header-only"
+#    CACHE INTERNAL "ToyUtility ThirdParty Dependent Libs"
+#)
