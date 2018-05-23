@@ -111,6 +111,8 @@ SET(TOY_UTILITY_SRC_MATH
 
 SET(TOY_UTILITY_INC_MEMORY
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Memory/SmartPtr.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Memory/FrameAllocator.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Memory/NormalAllocator.h"
 )
 
 SET(TOY_UTILITY_SRC_MEMORY
