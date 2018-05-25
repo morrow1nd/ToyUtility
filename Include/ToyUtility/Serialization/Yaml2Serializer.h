@@ -41,6 +41,10 @@ public:
 
     virtual void Flush();
 
+
+private:
+    yaml_emitter_t m_YamlEmitter;
+    yaml_event_t m_YamlEvent;
 };
 
 

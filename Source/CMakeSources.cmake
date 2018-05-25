@@ -127,25 +127,29 @@ SET(TOY_UTILITY_SRC_PREREQUISITES
 )
 
 SET(TOY_UTILITY_INC_SERIALIZATION
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/BinarySerializer.h"
+    #"${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/BinarySerializer.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/JsonSerializer.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/JsonUnserializer.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Serializable.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Serializer.h"
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/TextSerializer.h"
+    #"${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/TextSerializer.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Unserializer.h"
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/XmlSerializer.h"
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/XmlUnserializer.h"
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Yaml2Serializer.h"
+    #"${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/XmlSerializer.h"
+    #"${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/XmlUnserializer.h"
+    #"${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Yaml2Serializer.h"
+    #"${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/Yaml2Unserializer.h"
 )
 
 SET(TOY_UTILITY_SRC_SERIALIZATION
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/JsonSerializer.cpp"
+	"${TOY_UTILITY_SOURCE_DIR}/Serialization/JsonUnserializer.cpp"
 	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/Serializer.cpp"
-	"${TOY_UTILITY_SOURCE_DIR}/Serialization/TextSerializer.cpp"
+	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/TextSerializer.cpp"
 	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/Unserializer.cpp"
-	"${TOY_UTILITY_SOURCE_DIR}/Serialization/XmlSerializer.cpp"
-	"${TOY_UTILITY_SOURCE_DIR}/Serialization/XmlUnserializer.cpp"
-	"${TOY_UTILITY_SOURCE_DIR}/Serialization/Yaml2Serializer.cpp"
-	"${TOY_UTILITY_SOURCE_DIR}/Serialization/Yaml2Unserializer.cpp"
+	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/XmlSerializer.cpp"
+	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/XmlUnserializer.cpp"
+	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/Yaml2Serializer.cpp"
+	#"${TOY_UTILITY_SOURCE_DIR}/Serialization/Yaml2Unserializer.cpp"
 )
 
 SET(TOY_UTILITY_INC_STRING

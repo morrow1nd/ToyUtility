@@ -47,9 +47,6 @@ public:
     virtual void BeginArray(const String& name = "") {}
     virtual void EndArray() {}
 
-    // Focus write all data to data stream.
-    virtual void Flush() = 0;
-
 
 protected:
     DataStream & m_Stream;
