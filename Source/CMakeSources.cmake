@@ -25,6 +25,7 @@ SET(TOY_UTILITY_SRC_DATA_STREAM
 SET(TOY_UTILITY_INC_DESIGN_PATTERN
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/IModule.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/ISingleton.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/IUncopyable.h"
 )
 
 SET(TOY_UTILITY_INC_EVENT
@@ -37,11 +38,31 @@ SET(TOY_UTILITY_SRC_EVENT
 	"${TOY_UTILITY_SOURCE_DIR}/Event/EventListener.cpp"
 )
 
-SET(TOY_UTILITY_INC_FILE
-    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/File/FileSystemPath.h"
+SET(TOY_UTILITY_INC_FILE_SYSTEM
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/FileSystem/FileHandle.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/FileSystem/FilePath.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/FileSystem/FileSystem.h"
 )
 
-SET(TOY_UTILITY_SRC_FILE
+SET(TOY_UTILITY_SRC_FILE_SYSTEM
+    "${TOY_UTILITY_SOURCE_DIR}/FileSystem/FilePath.cpp"
+    "${TOY_UTILITY_SOURCE_DIR}/FileSystem/FileSystem.cpp"
+)
+
+SET(TOY_UTILITY_INC_FILE_SYSTEM_WINDOWS
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/FileSystem/windows/WindowsFileHandle.h"
+)
+
+SET(TOY_UTILITY_SRC_FILE_SYSTEM_WINDOWS
+    "${TOY_UTILITY_SOURCE_DIR}/FileSystem/windows/WindowsFileHandle.cpp"
+)
+
+SET(TOY_UTILITY_INC_FILE_SYSTEM_POSIX
+
+)
+
+SET(TOY_UTILITY_SRC_FILE_SYSTEM_POSIX
+
 )
 
 SET(TOY_UTILITY_INC_LOG
@@ -178,8 +199,12 @@ source_group("Source Files\\Memory"						FILES ${TOY_UTILITY_SRC_MEMORY})
 source_group("Header Files\\Design Pattern"				FILES ${TOY_UTILITY_INC_DESIGN_PATTERN})
 source_group("Header Files\\Event"						FILES ${TOY_UTILITY_INC_EVENT})
 source_group("Source Files\\Event"						FILES ${TOY_UTILITY_SRC_EVENT})
-source_group("Header Files\\File"						FILES ${TOY_UTILITY_INC_FILE})
-source_group("Source Files\\File"						FILES ${TOY_UTILITY_SRC_FILE})
+source_group("Header Files\\File System"				FILES ${TOY_UTILITY_INC_FILE_SYSTEM})
+source_group("Source Files\\File System"				FILES ${TOY_UTILITY_SRC_FILE_SYSTEM})
+source_group("Header Files\\File System\\windows"		FILES ${TOY_UTILITY_INC_FILE_SYSTEM_WINDOWS})
+source_group("Source Files\\File System\\windows"		FILES ${TOY_UTILITY_SRC_FILE_SYSTEM_WINDOWS})
+source_group("Header Files\\File System\\posix"			FILES ${TOY_UTILITY_INC_FILE_SYSTEM_POSIX})
+source_group("Source Files\\File System\\posix"			FILES ${TOY_UTILITY_SRC_FILE_SYSTEM_POSIX})
 source_group("Header Files\\Math"						FILES ${TOY_UTILITY_INC_MATH})
 source_group("Source Files\\Math"						FILES ${TOY_UTILITY_SRC_MATH})
 source_group("Header Files\\Log"						FILES ${TOY_UTILITY_INC_LOG})
@@ -204,8 +229,12 @@ set(TOY_UTILITY_SRC
 	${TOY_UTILITY_INC_DESIGN_PATTERN}
 	${TOY_UTILITY_INC_EVENT}
 	${TOY_UTILITY_SRC_EVENT}
-	${TOY_UTILITY_INC_FILE}
-	${TOY_UTILITY_SRC_FILE}
+	${TOY_UTILITY_INC_FILE_SYSTEM}
+	${TOY_UTILITY_SRC_FILE_SYSTEM}
+	${TOY_UTILITY_INC_FILE_SYSTEM_WINDOWS}
+	${TOY_UTILITY_SRC_FILE_SYSTEM_WINDOWS}
+	${TOY_UTILITY_INC_FILE_SYSTEM_POSIX}
+	${TOY_UTILITY_SRC_FILE_SYSTEM_POSIX}
 	${TOY_UTILITY_INC_MATH}
 	${TOY_UTILITY_SRC_MATH}
 	${TOY_UTILITY_INC_LOG}
