@@ -147,6 +147,14 @@ SET(TOY_UTILITY_INC_PREREQUISITES
 SET(TOY_UTILITY_SRC_PREREQUISITES
 )
 
+SET(TOY_UTILITY_INC_RANDOM
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Random/UUID.h"
+)
+
+SET(TOY_UTILITY_SRC_RANDOM
+    "${TOY_UTILITY_SOURCE_DIR}/Random/UUID.cpp"
+)
+
 SET(TOY_UTILITY_INC_SERIALIZATION
     #"${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/BinarySerializer.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Serialization/JsonSerializer.h"
@@ -213,6 +221,8 @@ source_group("Header Files\\Serialization"              FILES ${TOY_UTILITY_INC_
 source_group("Source Files\\Serialization"              FILES ${TOY_UTILITY_SRC_SERIALIZATION})
 source_group("Header Files\\Data Stream"                FILES ${TOY_UTILITY_INC_DATA_STREAM})
 source_group("Source Files\\Data Stream"                FILES ${TOY_UTILITY_SRC_DATA_STREAM})
+source_group("Header Files\\Random"						FILES ${TOY_UTILITY_INC_RANDOM})
+source_group("Source Files\\Random"						FILES ${TOY_UTILITY_SRC_RANDOM})
 
 
 set(TOY_UTILITY_SRC
@@ -243,4 +253,6 @@ set(TOY_UTILITY_SRC
 	${TOY_UTILITY_SRC_SERIALIZATION}
 	${TOY_UTILITY_INC_DATA_STREAM}
 	${TOY_UTILITY_SRC_DATA_STREAM}
+	${TOY_UTILITY_INC_RANDOM}
+	${TOY_UTILITY_SRC_RANDOM}
 )
