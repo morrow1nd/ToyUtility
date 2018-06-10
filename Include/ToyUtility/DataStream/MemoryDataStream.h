@@ -16,7 +16,7 @@ public:
     *
     * @param[in]	size		Size of the memory chunk in bytes.
     */
-    MemoryDataStream(size_t size);
+    MemoryDataStream(size_t size, uint16 readWriteFlag = READ | WRITE);
 
     /**
     * Wrap an existing memory chunk in a stream.
@@ -25,7 +25,7 @@ public:
     * @param[in]	size		Size of the memory chunk in bytes.
     * @param[in]	freeOnClose	Should the memory buffer be freed when the data stream goes out of scope.
     */
-    MemoryDataStream(void* memory, size_t size, bool freeOnClose = true);
+    MemoryDataStream(void* memory, size_t size, bool freeOnClose = true, uint16 readWriteFlag = READ | WRITE);
 
     ~MemoryDataStream();
 

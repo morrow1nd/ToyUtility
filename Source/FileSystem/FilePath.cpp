@@ -288,7 +288,7 @@ String FilePath::Resolved() const
     else                  return resolved;
 }
 
-void FilePath::_Analyse() const
+void FilePath::_Analyse()
 {
     // Convert path into unified form
     std::replace(m_Path.begin(), m_Path.end(), '\\', '/');
@@ -372,7 +372,7 @@ void FilePath::_Analyse() const
     }
 
     // Determine basename and extension
-    size_t pos = m_FileName.find_first_of('.', 1);
+    pos = m_FileName.find_first_of('.', 1);
 
     if (m_FileName == "." || m_FileName == ".." || pos == std::string::npos)
     {

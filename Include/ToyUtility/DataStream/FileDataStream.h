@@ -24,6 +24,8 @@ public:
     */
     FileDataStream(const String& filePath, AccessMode accessMode = READ, bool freeOnClose = true);
 
+    FileDataStream(UPtr<std::istream> stream, AccessMode accessMode = READ, bool freeOnClose = false);
+
     ~FileDataStream();
 
     /** @copydoc DataStream::read */

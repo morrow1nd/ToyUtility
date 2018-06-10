@@ -218,7 +218,7 @@ private:
     *    such as m_filename, etc. and set m_Analysed to 'true'.
     *    If m_Analysed is already 'true', it returns immediately.
     */
-    void _Analyse() const;
+    void _Analyse();
 
 
 private:

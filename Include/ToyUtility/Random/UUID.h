@@ -1,5 +1,6 @@
 #pragma once
 
+#include <functional>
 #include "ToyUtility/Prerequisites/PreDefine.h"
 #include "ToyUtility/String/String.h"
 
@@ -14,6 +15,8 @@ struct UUID
     static UUID CreateVersion4();
     static UUID Rebuild(uint64 X, uint64 Y);
     static UUID Rebuild(const String& uustr);
+
+    static UUID None;
 
 
     UUID()
@@ -51,21 +54,7 @@ struct UUID
     } Data;
 };
 
-
-} // end of namespace ToyUtility
-
-
-#ifdef _MSC_VER
-#pragma warning(push)
-#pragma warning(disable:4127)
-#endif
-
-#include <functional>
-
-namespace std
-{
-template<>
-class hash< ToyUtility::UUID > : public std::unary_function< ToyUtility::UUID, size_t >
+class UUIDHasher : public std::unary_function< ToyUtility::UUID, size_t >
 {
 public:
     // hash functor: hash uuid to size_t value by pseudorandomizing transform
@@ -82,8 +71,16 @@ public:
         }
     }
 };
-}
 
-#ifdef _MSC_VER
-#pragma warning(pop)
-#endif
+class UUIDEqualTo
+{
+public:
+    bool operator()(const ToyUtility::UUID& lhs, const ToyUtility::UUID& rhs) const
+    {
+        return lhs.Data.Numbers64.X == rhs.Data.Numbers64.Y
+            && lhs.Data.Numbers64.Y == rhs.Data.Numbers64.Y;
+    }
+};
+
+
+} // end of namespace ToyUtility

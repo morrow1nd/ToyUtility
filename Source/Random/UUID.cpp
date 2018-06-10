@@ -7,6 +7,9 @@ namespace ToyUtility
 {
 
 
+UUID UUID::None = UUID(0,0);
+
+
 UUID UUID::CreateVersion1()
 {
     auto uuid = sole::uuid1();

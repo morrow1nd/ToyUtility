@@ -26,6 +26,15 @@ SET(TOY_UTILITY_INC_DESIGN_PATTERN
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/IModule.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/ISingleton.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/IUncopyable.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/DesignPattern/RefCounted.h"
+)
+
+SET(TOY_UTILITY_INC_ENCODE
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Encode/Base64.h"
+)
+
+SET(TOY_UTILITY_SRC_ENCODE
+	"${TOY_UTILITY_SOURCE_DIR}/Encode/Base64.cpp"
 )
 
 SET(TOY_UTILITY_INC_EVENT
@@ -58,11 +67,9 @@ SET(TOY_UTILITY_SRC_FILE_SYSTEM_WINDOWS
 )
 
 SET(TOY_UTILITY_INC_FILE_SYSTEM_POSIX
-
 )
 
 SET(TOY_UTILITY_SRC_FILE_SYSTEM_POSIX
-
 )
 
 SET(TOY_UTILITY_INC_LOG
@@ -205,6 +212,8 @@ source_group("Source Files\\Prerequisites"              FILES ${TOY_UTILITY_SRC_
 source_group("Header Files\\Memory"						FILES ${TOY_UTILITY_INC_MEMORY})
 source_group("Source Files\\Memory"						FILES ${TOY_UTILITY_SRC_MEMORY})
 source_group("Header Files\\Design Pattern"				FILES ${TOY_UTILITY_INC_DESIGN_PATTERN})
+source_group("Header Files\\Encode"						FILES ${TOY_UTILITY_INC_ENCODE})
+source_group("Source Files\\Encode"						FILES ${TOY_UTILITY_SRC_ENCODE})
 source_group("Header Files\\Event"						FILES ${TOY_UTILITY_INC_EVENT})
 source_group("Source Files\\Event"						FILES ${TOY_UTILITY_SRC_EVENT})
 source_group("Header Files\\File System"				FILES ${TOY_UTILITY_INC_FILE_SYSTEM})
@@ -237,6 +246,8 @@ set(TOY_UTILITY_SRC
 	${TOY_UTILITY_INC_MEMORY}
 	${TOY_UTILITY_SRC_MEMORY}
 	${TOY_UTILITY_INC_DESIGN_PATTERN}
+	${TOY_UTILITY_INC_ENCODE}
+	${TOY_UTILITY_SRC_ENCODE}
 	${TOY_UTILITY_INC_EVENT}
 	${TOY_UTILITY_SRC_EVENT}
 	${TOY_UTILITY_INC_FILE_SYSTEM}

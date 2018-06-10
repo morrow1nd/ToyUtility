@@ -71,6 +71,16 @@ FileHandleType WindowsFileHandle::HandleType() const
     return FileHandleType::Unknown;
 }
 
+bool WindowsFileHandle::IsFile() const
+{
+    return HandleType() == FileHandleType::File;
+}
+
+bool WindowsFileHandle::IsDirectory() const
+{
+    return HandleType() == FileHandleType::Directory;
+}
+
 bool WindowsFileHandle::IsSymbolicLink() const
 {
     _ReadFileInfo();
@@ -272,7 +282,7 @@ void WindowsFileHandle::Copy(FileHandle& dest)
 bool WindowsFileHandle::Move(FileHandle& dest)
 {
     Copy(dest);
-    Remove();
+    return Remove();
 }
 
 #ifdef CreateHardLink
@@ -363,12 +373,12 @@ bool WindowsFileHandle::Rename(const String & newName)
     return true;
 }
 
-UPtr<std::istream> WindowsFileHandle::CreateInputStream(std::ios_base::openmode mode = std::ios_base::in) const
+UPtr<std::istream> WindowsFileHandle::CreateInputStream(std::ios_base::openmode mode) const
 {
     return std::unique_ptr<std::istream>(new std::ifstream(m_Path, mode));
 }
 
-UPtr<std::ostream> WindowsFileHandle::CreateOutputStream(std::ios_base::openmode mode = std::ios_base::out)
+UPtr<std::ostream> WindowsFileHandle::CreateOutputStream(std::ios_base::openmode mode)
 {
     return std::unique_ptr<std::ostream>(new std::ofstream(m_Path, mode));
 }

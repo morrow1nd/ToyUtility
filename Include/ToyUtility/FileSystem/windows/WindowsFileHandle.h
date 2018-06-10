@@ -21,6 +21,8 @@ public:
     virtual String ParentDirectory() const override;
     virtual bool Exist() const override;
     virtual FileHandleType HandleType() const override;
+    virtual bool IsFile() const override;
+    virtual bool IsDirectory() const override;
     virtual bool IsSymbolicLink() const override;
     virtual List<String> ListFiles() const override;
     virtual uint32 Size() const override;

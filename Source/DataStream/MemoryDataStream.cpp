@@ -9,8 +9,8 @@ namespace ToyUtility
 {
 
 
-MemoryDataStream::MemoryDataStream(size_t size)
-    : DataStream(READ | WRITE), mData(nullptr), mFreeOnClose(true)
+MemoryDataStream::MemoryDataStream(size_t size, uint16 readWriteFlag)
+    : DataStream(readWriteFlag), mData(nullptr), mFreeOnClose(true)
 {
     mData = mPos = (uint8*)new uint8[(UINT32)size];
     m_Size = size;
@@ -19,8 +19,8 @@ MemoryDataStream::MemoryDataStream(size_t size)
     assert(mEnd >= mPos);
 }
 
-MemoryDataStream::MemoryDataStream(void* memory, size_t inSize, bool freeOnClose)
-    : DataStream(READ | WRITE), mData(nullptr), mFreeOnClose(freeOnClose)
+MemoryDataStream::MemoryDataStream(void* memory, size_t inSize, bool freeOnClose, uint16 readWriteFlag)
+    : DataStream(readWriteFlag), mData(nullptr), mFreeOnClose(freeOnClose)
 {
     mData = mPos = static_cast<UINT8*>(memory);
     m_Size = inSize;

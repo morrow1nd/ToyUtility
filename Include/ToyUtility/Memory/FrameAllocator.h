@@ -10,42 +10,45 @@ namespace ToyUtility
 {
 
 
+struct FrameAllocatorBlock
+{
+    FrameAllocatorBlock() : Usage(0), Length(0), Data(nullptr)
+    {
+    }
+
+    template<typename AllocatorType>
+    void Init(AllocatorType& allocator, uint32 amount)
+    {
+        Data = static_cast<uint8*>(allocator.Alloc(amount));
+        Length = amount;
+        Usage = 0;
+    }
+
+    template<typename AllocatorType>
+    void Release(AllocatorType& allocator)
+    {
+        allocator.Free(Data);
+        Data = nullptr;
+        Length = 0;
+        Usage = 0;
+    }
+
+    bool Enough(uint32 needed) const
+    {
+        return Usage + needed <= Length;
+    }
+
+
+    uint32 Usage;
+    uint32 Length;
+    uint8* Data;
+};
+
+
 template<typename AllocatorType>
 class FrameAllocator
 {
 private:
-    struct FrameAllocatorBlock
-    {
-        FrameAllocatorBlock() : Usage(0), Length(0), Data(nullptr) {}
-
-        template<typename AllocatorType>
-        void Init(AllocatorType& allocator, uint32 amount)
-        {
-            Data = static_cast<uint8*>(allocator.Alloc(amount));
-            Length = amount;
-            Usage = 0;
-        }
-
-        template<typename AllocatorType>
-        void Release(AllocatorType& allocator)
-        {
-            allocator.Free(Data);
-            Data = nullptr;
-            Length = 0;
-            Usage = 0;
-        }
-
-        bool Enough(uint32 needed) const
-        {
-            return Usage + needed <= Length;
-        }
-
-
-        uint32 Usage;
-        uint32 Length;
-        uint8* Data;
-    };
-
 
 public:
     using allocator_t = AllocatorType;
@@ -74,9 +77,10 @@ public:
 
     void Clear()
     {
-        for each(auto& block in m_Pools)
+        int size = m_Pools.size();
+        for (int i = 0; i < size; ++i)
         {
-            block.Release(m_Allocator);
+            m_Pools[i].Release(m_Allocator);
         }
         m_Pools.clear();
     }

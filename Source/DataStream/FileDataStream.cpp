@@ -46,6 +46,20 @@ FileDataStream::FileDataStream(const String& path, AccessMode accessMode, bool f
     mInStream->seekg(0, std::ios_base::beg);
 }
 
+FileDataStream::FileDataStream(UPtr<std::istream> stream, AccessMode accessMode, bool freeOnClose)
+    :
+    DataStream(accessMode),
+    mFreeOnClose(freeOnClose)
+{
+    // TODOM
+    if (IsWriteable())
+    {
+        TOY_RAW_LOG << "Error: can't write" << std::endl;
+    }
+
+    mInStream.reset(stream.release());
+}
+
 FileDataStream::~FileDataStream()
 {
     Close();

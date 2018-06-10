@@ -54,10 +54,16 @@ public:
     // Check is a file or directory
     virtual FileHandleType HandleType() const = 0;
 
+    // Check is a file
+    virtual bool IsFile() const = 0;
+
+    // Check is a directory
+    virtual bool IsDirectory() const = 0;
+
     // Check if item is a symbolic link
     virtual bool IsSymbolicLink() const = 0;
 
-    // List all items in directory
+    // List all items' name in directory
     virtual List<String> ListFiles() const = 0;
 
     // ... move way to traverse
@@ -118,11 +124,13 @@ public:
 
     // Create input stream to read from the file
     // The created stream object has to be destroyed by the caller.
+    // @mode see std::ios_base::openmode
     // @return nullptr if error happens
     virtual UPtr<std::istream> CreateInputStream(std::ios_base::openmode mode = std::ios_base::in) const = 0;
 
     // Create output stream to write to the file
     // The created stream object has to be destroyed by the caller.
+    // @mode see std::ios_base::openmode
     // @return nullptr if error happens
     virtual UPtr<std::ostream> CreateOutputStream(std::ios_base::openmode mode = std::ios_base::out) = 0;
 

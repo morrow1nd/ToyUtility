@@ -18,4 +18,24 @@ typedef std::int64_t int64;
 typedef std::uint64_t uint64;
 
 
+enum CommonType
+{
+    _Begin = 0,
+
+    bool_,
+    uint8_,
+    int8_,
+    uint16_,
+    int16_,
+    uint32_,
+    int32_,
+    uint64_,
+    int64_,
+    float_,
+    double_,
+
+    _End,
+};
+
+
 } // end of namespace ToyUtility
