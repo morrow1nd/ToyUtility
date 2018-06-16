@@ -95,6 +95,7 @@ SET(TOY_UTILITY_INC_MATH
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Plane.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Quaternion.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Radian.h"
+    "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Rational.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Ray.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Rect2.h"
     "${TOY_UTILITY_INCLUDE_DIR}/ToyUtility/Math/Rect2I.h"
