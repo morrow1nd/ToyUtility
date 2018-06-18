@@ -2,6 +2,38 @@
 # ToyUtility/Source
 # 
 
+
+## Operating System Check
+# set(TOY_OS_UNKNOWN			"(0)")		# Unknown
+# set(TOY_OS_WINDOWS			"(1 << 0)") # Microsoft Windows
+# set(TOY_OS_LINUX			"(1 << 1)") # Linux
+# set(TOY_OS_UNIX				"(1 << 2)") # Linux And Apple MacOS
+# set(TOY_OS_MACOS			"(1 << 3)") # Apple MacOS
+# 
+# SET(TOY_OS ${TOY_OS_UNKNOWN} CACHE INTERNAL "-")
+
+SET(TOY_WINDOWS FALSE CACHE INTERNAL "-")
+SET(TOY_MACOS FALSE CACHE INTERNAL "-")
+SET(TOY_LINUX FALSE CACHE INTERNAL "-")
+SET(TOY_UNIX FALSE CACHE INTERNAL "-")
+
+if(WIN32)
+SET(TOY_WINDOWS TRUE CACHE INTERNAL "-")
+endif()
+if(APPLE)
+SET(TOY_MACOS TRUE CACHE INTERNAL "-")
+endif()
+if(LINUX)
+SET(TOY_LINUX TRUE CACHE INTERNAL "-")
+endif()
+if(UNIX AND NOT APPLE)
+SET(TOY_UNIX TRUE CACHE INTERNAL "-")
+endif()
+
+## Compiler Check(TODO)
+
+
+
 ## Configure file
 CONFIGURE_FILE(
     "${TOY_UTILITY_SOURCE_DIR}/ToyUtilityConfig.h.in"
