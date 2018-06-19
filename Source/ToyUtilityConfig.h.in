@@ -1,4 +1,8 @@
+// auto-gen file by cmake
 
-
+#define TOY_WINDOWS @TOY_WINDOWS@
+#define TOY_MACOS @TOY_MACOS@
+#define TOY_LINUX @TOY_LINUX@
+#define TOY_UNIX @TOY_UNIX@
 
 #define TOY_FILE_SYSTEM_WINDOWS 1
