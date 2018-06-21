@@ -53,6 +53,9 @@ uint32 MemoryDataStream::Read(void* buf, uint32 count)
 
 uint32 MemoryDataStream::Write(const void* buf, uint32 count)
 {
+    if (count == 0)
+        return 0;
+
     size_t written = 0;
     if (IsWriteable())
     {
